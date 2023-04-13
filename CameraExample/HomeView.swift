@@ -15,7 +15,7 @@ struct HomeView: View {
         VStack {
             Spacer()
             Button {
-                presentCameraView.toggle()
+                presentCameraView = true
             } label: {
                 ZStack {
                     Circle()
@@ -30,7 +30,10 @@ struct HomeView: View {
         }
         .padding()
         .fullScreenCover(isPresented: $presentCameraView) {
-            CameraView()
+            CameraView(cancelPressed: {
+                presentCameraView = false
+            })
+                .ignoresSafeArea()
         }
         .onAppear {
             cameraManager.requestPermission()
