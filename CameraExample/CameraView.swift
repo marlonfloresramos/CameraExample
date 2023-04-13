@@ -15,6 +15,8 @@ struct CameraView: UIViewControllerRepresentable {
     
     var cancelPressed: ()->()
     
+    var getImage: (UIImage) -> ()
+    
     func makeUIViewController(context: Context) -> UIViewControllerType {
         let viewController = UIViewControllerType()
         viewController.delegate = context.coordinator
@@ -45,7 +47,7 @@ extension CameraView {
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                parent.getImage(image)
             }
         }
     }

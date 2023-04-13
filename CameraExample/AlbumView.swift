@@ -7,12 +7,32 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct AlbumView: View {
     @StateObject var cameraManager = CameraManager()
     @State var presentCameraView = false
+    @State var images: [UIImage] = []
+    
+    let columns = [
+        GridItem(.flexible(), spacing: 2),
+        GridItem(.flexible(), spacing: 2),
+    ]
     
     var body: some View {
         VStack {
+            Text("Example Album")
+                .font(.headline)
+                .fontWeight(.bold)
+            if images.count > 0 {
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 2) {
+                        ForEach(images, id: \.self) { image in
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                        }
+                    }
+                }
+            }
             Spacer()
             Button {
                 presentCameraView = true
@@ -28,12 +48,14 @@ struct HomeView: View {
                 }
             }
         }
-        .padding()
         .fullScreenCover(isPresented: $presentCameraView) {
             CameraView(cancelPressed: {
                 presentCameraView = false
+            }, getImage: { image in
+                images.append(image)
+                presentCameraView = false
             })
-                .ignoresSafeArea()
+            .ignoresSafeArea()
         }
         .onAppear {
             cameraManager.requestPermission()
@@ -41,8 +63,8 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct AlbumView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        AlbumView()
     }
 }
