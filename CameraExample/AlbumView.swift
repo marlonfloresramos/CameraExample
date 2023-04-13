@@ -18,47 +18,53 @@ struct AlbumView: View {
     ]
     
     var body: some View {
-        VStack {
-            Text("Example Album")
-                .font(.headline)
-                .fontWeight(.bold)
-            if images.count > 0 {
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 2) {
-                        ForEach(images, id: \.self) { image in
-                            Image(uiImage: image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
+        NavigationStack {
+            VStack {
+                Text("Example Album")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                if images.count > 0 {
+                    ScrollView {
+                        LazyVGrid(columns: columns, spacing: 2) {
+                            ForEach(images, id: \.self) { image in
+                                NavigationLink {
+                                    DetailView(image: image)
+                                } label: {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                }
+                            }
                         }
                     }
                 }
-            }
-            Spacer()
-            Button {
-                presentCameraView = true
-            } label: {
-                ZStack {
-                    Circle()
-                        .fill(.white)
-                        .frame(width: 60, height: 60)
-                        .shadow(radius: 2)
-                    Image(systemName: "camera.fill")
-                        .imageScale(.large)
-                        .foregroundColor(.accentColor)
+                Spacer()
+                Button {
+                    presentCameraView = true
+                } label: {
+                    ZStack {
+                        Circle()
+                            .fill(.white)
+                            .frame(width: 60, height: 60)
+                            .shadow(radius: 2)
+                        Image(systemName: "camera.fill")
+                            .imageScale(.large)
+                            .foregroundColor(.accentColor)
+                    }
                 }
             }
-        }
-        .fullScreenCover(isPresented: $presentCameraView) {
-            CameraView(cancelPressed: {
-                presentCameraView = false
-            }, getImage: { image in
-                images.append(image)
-                presentCameraView = false
-            })
-            .ignoresSafeArea()
-        }
-        .onAppear {
-            cameraManager.requestPermission()
+            .fullScreenCover(isPresented: $presentCameraView) {
+                CameraView(cancelPressed: {
+                    presentCameraView = false
+                }, getImage: { image in
+                    images.append(image)
+                    presentCameraView = false
+                })
+                .ignoresSafeArea()
+            }
+            .onAppear {
+                cameraManager.requestPermission()
+            }
         }
     }
 }
