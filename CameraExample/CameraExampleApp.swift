@@ -11,7 +11,7 @@ import SwiftUI
 struct CameraExampleApp: App {
     var body: some Scene {
         WindowGroup {
-            AlbumView()
+            HomeView()
         }
     }
 }

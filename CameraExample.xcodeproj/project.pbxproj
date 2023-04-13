@@ -14,6 +14,8 @@
 		6BD6D32C29E86CCE0067366E /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6D32B29E86CCE0067366E /* CameraView.swift */; };
 		6BD6D32E29E86E290067366E /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6D32D29E86E290067366E /* CameraManager.swift */; };
 		6BD6D33329E8BB780067366E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6D33229E8BB780067366E /* DetailView.swift */; };
+		6BD6D33529E8BF630067366E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6D33429E8BF630067366E /* HomeView.swift */; };
+		6BD6D33729E8C32B0067366E /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6D33629E8C32B0067366E /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		6BD6D32D29E86E290067366E /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		6BD6D32F29E88F340067366E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6BD6D33229E8BB780067366E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		6BD6D33429E8BF630067366E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		6BD6D33629E8C32B0067366E /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				6BD6D32329E86A590067366E /* Preview Content */,
 				6BD6D32D29E86E290067366E /* CameraManager.swift */,
 				6BD6D33229E8BB780067366E /* DetailView.swift */,
+				6BD6D33429E8BF630067366E /* HomeView.swift */,
+				6BD6D33629E8C32B0067366E /* Album.swift */,
 			);
 			path = CameraExample;
 			sourceTree = "<group>";
@@ -151,7 +157,9 @@
 				6BD6D32C29E86CCE0067366E /* CameraView.swift in Sources */,
 				6BD6D32029E86A570067366E /* AlbumView.swift in Sources */,
 				6BD6D32E29E86E290067366E /* CameraManager.swift in Sources */,
+				6BD6D33529E8BF630067366E /* HomeView.swift in Sources */,
 				6BD6D33329E8BB780067366E /* DetailView.swift in Sources */,
+				6BD6D33729E8C32B0067366E /* Album.swift in Sources */,
 				6BD6D31E29E86A570067366E /* CameraExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
