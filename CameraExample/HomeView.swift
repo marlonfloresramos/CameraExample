@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject var cameraManager = CameraManager()
     @State var presentCameraView = false
     
     var body: some View {
@@ -30,6 +31,9 @@ struct HomeView: View {
         .padding()
         .fullScreenCover(isPresented: $presentCameraView) {
             CameraView()
+        }
+        .onAppear {
+            cameraManager.requestPermission()
         }
     }
 }
