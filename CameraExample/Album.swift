@@ -10,7 +10,7 @@ import Foundation
 struct Album: Hashable {
     let name: String
     
-    static let mockedList = [
+    static var mockedList = [
         Album(name: "Album Name 1"),
         Album(name: "Album Name 2"),
         Album(name: "Album Name 3")
