@@ -11,6 +11,9 @@ struct AlbumView: View {
     @StateObject var cameraManager = CameraManager()
     @State var presentCameraView = false
     @State var images: [UIImage] = []
+    var album: Album
+    
+    @EnvironmentObject var manager: DataManager
     
     let columns = [
         GridItem(.flexible(), spacing: 2),
@@ -26,11 +29,11 @@ struct AlbumView: View {
                 if images.count > 0 {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 2) {
-                            ForEach(images, id: \.self) { image in
+                            ForEach(manager.filteredImages) { photo in
                                 NavigationLink {
-                                    DetailView(image: image)
+                                    DetailView(image: photo.image)
                                 } label: {
-                                    Image(uiImage: image)
+                                    Image(uiImage: photo.image)
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                 }
@@ -58,6 +61,7 @@ struct AlbumView: View {
                     presentCameraView = false
                 }, getImage: { image in
                     images.append(image)
+                    manager.addPhoto(in: album, image: image)
                     presentCameraView = false
                 })
                 .ignoresSafeArea()
@@ -71,6 +75,6 @@ struct AlbumView: View {
 
 struct AlbumView_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumView()
+        AlbumView(album: Album())
     }
 }

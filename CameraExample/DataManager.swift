@@ -6,11 +6,12 @@
 //
 
 import CoreData
-import Foundation
+import UIKit
 
 class DataManager: ObservableObject {
     let container: NSPersistentContainer
     @Published var albums = [Album]()
+    @Published var filteredImages = [Photo]()
     
     init() {
         container = NSPersistentContainer(name: "CoreDataModel")
@@ -44,11 +45,26 @@ class DataManager: ObservableObject {
         print("Add album succesfully")
     }
     
+    func addPhoto(in album: Album, image: UIImage) {
+        let entityDescription = NSEntityDescription.entity(forEntityName: "Photo", in: container.viewContext)
+        let photo = Photo(entity: entityDescription!, insertInto: container.viewContext)
+        photo.album = album
+        photo.image = image
+        photo.id = UUID()
+        saveData()
+        filterImages(with: album)
+    }
+    
     func saveData() {
         do {
             try container.viewContext.save()
         } catch {
             print("error while saving data: \(error)")
         }
+    }
+    
+    func filterImages(with album: Album) {
+        guard let photos = albums.filter( { $0.id == album.id }).first?.photos?.array as? [Photo] else { return }
+        filteredImages = photos
     }
 }

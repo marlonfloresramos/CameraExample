@@ -20,7 +20,7 @@ struct HomeView: View {
                     .font(.title)
                 List(manager.albums, id: \.self) { album in
                     NavigationLink {
-                        AlbumView()
+                        AlbumView(album: album)
                     } label: {
                         Text(album.name ?? "")
                     }
