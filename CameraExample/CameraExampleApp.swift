@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct CameraExampleApp: App {
+    @StateObject private var manager: DataManager = DataManager()
+    
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environmentObject(manager)
         }
     }
 }

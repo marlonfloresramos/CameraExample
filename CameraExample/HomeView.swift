@@ -8,20 +8,21 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var albums: [Album] = Album.mockedList
     @State var presentAddAlbum = false
     @State var newAlbumName = ""
+    
+    @EnvironmentObject var manager: DataManager
     
     var body: some View {
         NavigationStack {
             VStack {
                 Text("Albums")
                     .font(.title)
-                List(albums, id: \.self) { album in
+                List(manager.albums, id: \.self) { album in
                     NavigationLink {
                         AlbumView()
                     } label: {
-                        Text(album.name)
+                        Text(album.name ?? "")
                     }
                 }
                 Spacer()
@@ -44,7 +45,7 @@ struct HomeView: View {
         .alert("Add Album", isPresented: $presentAddAlbum, actions: {
             TextField("Name", text: $newAlbumName)
             Button("Add", action: {
-                albums.append(Album(name: newAlbumName))
+                manager.addAlbum(name: newAlbumName)
             })
             Button("Cancel", role: .cancel, action: {})
         }, message: {
