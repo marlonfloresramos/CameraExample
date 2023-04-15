@@ -22,7 +22,7 @@ struct AlbumView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Example Album")
+                Text(album.name ?? "")
                     .font(.headline)
                     .fontWeight(.bold)
                 if manager.filteredImages.count > 0 {
@@ -30,9 +30,9 @@ struct AlbumView: View {
                         LazyVGrid(columns: columns, spacing: 2) {
                             ForEach(manager.filteredImages) { photo in
                                 NavigationLink {
-                                    DetailView(image: photo.image ?? UIImage())
+                                    DetailView(image: photo.photo)
                                 } label: {
-                                    Image(uiImage: photo.image ?? UIImage())
+                                    Image(uiImage: photo.photo)
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                 }

@@ -17,9 +17,16 @@ extension Photo {
     }
 
     @NSManaged public var id: UUID?
-    @NSManaged public var image: UIImage?
     @NSManaged public var album: Album?
-
+    @NSManaged public var image: Data?
+    
+    var photo: UIImage {
+        if let image {
+            return UIImage(data: image) ?? UIImage()
+        } else {
+            return UIImage()
+        }
+    }
 }
 
 extension Photo : Identifiable {

@@ -14,8 +14,6 @@ class DataManager: ObservableObject {
     @Published var filteredImages = [Photo]()
     
     init() {
-        
-        ValueTransformer.setValueTransformer(UIImageTransformer(), forName: NSValueTransformerName("UIImageTransformer"))
         container = NSPersistentContainer(name: "CoreDataModel")
         container.loadPersistentStores { description, error in
             if let error = error {
@@ -50,9 +48,10 @@ class DataManager: ObservableObject {
     func addPhoto(in album: Album, image: UIImage) {
         let entityDescription = NSEntityDescription.entity(forEntityName: "Photo", in: container.viewContext)
         let photo = Photo(entity: entityDescription!, insertInto: container.viewContext)
-        photo.album = album
-        photo.image = image
+        let imageData = image.jpegData(compressionQuality: 1)
         photo.id = UUID()
+        photo.image = imageData
+        photo.album = album
         saveData()
         filterImages(with: album)
     }
