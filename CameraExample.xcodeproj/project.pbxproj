@@ -55,13 +55,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6BD6D31129E86A570067366E = {
+		6B2F415529EABB190087100D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6BD6D31F29E86A570067366E /* AlbumView.swift */,
+				6BD6D32B29E86CCE0067366E /* CameraView.swift */,
+				6BD6D33229E8BB780067366E /* DetailView.swift */,
+				6BD6D33429E8BF630067366E /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6B2F415629EABB360087100D /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				6B2F415329EAB4070087100D /* UIImageTransformer.swift */,
 				6B2F414B29EA0E9A0087100D /* Album+CoreDataClass.swift */,
 				6B2F414C29EA0E9A0087100D /* Album+CoreDataProperties.swift */,
 				6B2F414D29EA0E9A0087100D /* Photo+CoreDataClass.swift */,
 				6B2F414E29EA0E9A0087100D /* Photo+CoreDataProperties.swift */,
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		6B2F415729EABB620087100D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				6BD6D32D29E86E290067366E /* CameraManager.swift */,
+				6BD6D33B29E99DD20067366E /* DataManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		6BD6D31129E86A570067366E = {
+			isa = PBXGroup;
+			children = (
 				6BD6D31C29E86A570067366E /* CameraExample */,
 				6BD6D31B29E86A570067366E /* Products */,
 			);
@@ -78,18 +106,14 @@
 		6BD6D31C29E86A570067366E /* CameraExample */ = {
 			isa = PBXGroup;
 			children = (
+				6BD6D31D29E86A570067366E /* CameraExampleApp.swift */,
+				6B2F415729EABB620087100D /* Managers */,
+				6B2F415629EABB360087100D /* CoreDataModels */,
+				6B2F415529EABB190087100D /* Views */,
 				6BD6D33829E99BE00067366E /* CoreDataModel.xcdatamodeld */,
 				6BD6D32F29E88F340067366E /* Info.plist */,
-				6BD6D31D29E86A570067366E /* CameraExampleApp.swift */,
-				6BD6D31F29E86A570067366E /* AlbumView.swift */,
-				6BD6D32B29E86CCE0067366E /* CameraView.swift */,
 				6BD6D32129E86A590067366E /* Assets.xcassets */,
 				6BD6D32329E86A590067366E /* Preview Content */,
-				6BD6D32D29E86E290067366E /* CameraManager.swift */,
-				6BD6D33229E8BB780067366E /* DetailView.swift */,
-				6BD6D33429E8BF630067366E /* HomeView.swift */,
-				6BD6D33B29E99DD20067366E /* DataManager.swift */,
-				6B2F415329EAB4070087100D /* UIImageTransformer.swift */,
 			);
 			path = CameraExample;
 			sourceTree = "<group>";
