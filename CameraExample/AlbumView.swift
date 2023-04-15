@@ -66,6 +66,7 @@ struct AlbumView: View {
             }
             .onAppear {
                 cameraManager.requestPermission()
+                manager.filterImages(with: album)
             }
         }
     }

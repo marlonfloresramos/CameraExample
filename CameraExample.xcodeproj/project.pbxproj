@@ -11,6 +11,7 @@
 		6B2F415029EA0E9A0087100D /* Album+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F414C29EA0E9A0087100D /* Album+CoreDataProperties.swift */; };
 		6B2F415129EA0E9A0087100D /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F414D29EA0E9A0087100D /* Photo+CoreDataClass.swift */; };
 		6B2F415229EA0E9A0087100D /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F414E29EA0E9A0087100D /* Photo+CoreDataProperties.swift */; };
+		6B2F415429EAB4070087100D /* UIImageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F415329EAB4070087100D /* UIImageTransformer.swift */; };
 		6BD6D31E29E86A570067366E /* CameraExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6D31D29E86A570067366E /* CameraExampleApp.swift */; };
 		6BD6D32029E86A570067366E /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6D31F29E86A570067366E /* AlbumView.swift */; };
 		6BD6D32229E86A590067366E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD6D32129E86A590067366E /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		6B2F414C29EA0E9A0087100D /* Album+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Album+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6B2F414D29EA0E9A0087100D /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6B2F414E29EA0E9A0087100D /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6B2F415329EAB4070087100D /* UIImageTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageTransformer.swift; sourceTree = "<group>"; };
 		6BD6D31A29E86A570067366E /* CameraExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD6D31D29E86A570067366E /* CameraExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraExampleApp.swift; sourceTree = "<group>"; };
 		6BD6D31F29E86A570067366E /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				6BD6D33229E8BB780067366E /* DetailView.swift */,
 				6BD6D33429E8BF630067366E /* HomeView.swift */,
 				6BD6D33B29E99DD20067366E /* DataManager.swift */,
+				6B2F415329EAB4070087100D /* UIImageTransformer.swift */,
 			);
 			path = CameraExample;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 				6BD6D32C29E86CCE0067366E /* CameraView.swift in Sources */,
 				6B2F415129EA0E9A0087100D /* Photo+CoreDataClass.swift in Sources */,
 				6BD6D32029E86A570067366E /* AlbumView.swift in Sources */,
+				6B2F415429EAB4070087100D /* UIImageTransformer.swift in Sources */,
 				6B2F414F29EA0E9A0087100D /* Album+CoreDataClass.swift in Sources */,
 				6B2F415029EA0E9A0087100D /* Album+CoreDataProperties.swift in Sources */,
 				6BD6D32E29E86E290067366E /* CameraManager.swift in Sources */,

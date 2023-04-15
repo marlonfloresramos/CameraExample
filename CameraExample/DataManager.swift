@@ -14,6 +14,8 @@ class DataManager: ObservableObject {
     @Published var filteredImages = [Photo]()
     
     init() {
+        
+        ValueTransformer.setValueTransformer(UIImageTransformer(), forName: NSValueTransformerName("UIImageTransformer"))
         container = NSPersistentContainer(name: "CoreDataModel")
         container.loadPersistentStores { description, error in
             if let error = error {
