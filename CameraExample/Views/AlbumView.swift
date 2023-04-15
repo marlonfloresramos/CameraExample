@@ -42,7 +42,9 @@ struct AlbumView: View {
                 }
                 Spacer()
                 Button {
-                    presentCameraView = true
+                    cameraManager.requestPermission { hasAccess in
+                        presentCameraView = hasAccess
+                    }
                 } label: {
                     ZStack {
                         Circle()
@@ -65,7 +67,6 @@ struct AlbumView: View {
                 .ignoresSafeArea()
             }
             .onAppear {
-                cameraManager.requestPermission()
                 manager.filterImages(with: album)
             }
         }

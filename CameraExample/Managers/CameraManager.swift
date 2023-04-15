@@ -9,12 +9,11 @@ import UIKit
 import AVFoundation
 
 class CameraManager : ObservableObject {
-    @Published var permissionGranted = false
     
-    func requestPermission() {
+    func requestPermission(completion: @escaping (Bool) -> ()) {
         AVCaptureDevice.requestAccess(for: .video, completionHandler: {accessGranted in
             DispatchQueue.main.async {
-                self.permissionGranted = accessGranted
+                completion(accessGranted)
             }
         })
     }
