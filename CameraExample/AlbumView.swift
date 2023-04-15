@@ -31,9 +31,9 @@ struct AlbumView: View {
                         LazyVGrid(columns: columns, spacing: 2) {
                             ForEach(manager.filteredImages) { photo in
                                 NavigationLink {
-                                    DetailView(image: photo.image)
+                                    DetailView(image: photo.image ?? UIImage())
                                 } label: {
-                                    Image(uiImage: photo.image)
+                                    Image(uiImage: photo.image ?? UIImage())
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                 }
