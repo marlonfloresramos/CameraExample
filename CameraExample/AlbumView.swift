@@ -10,7 +10,6 @@ import SwiftUI
 struct AlbumView: View {
     @StateObject var cameraManager = CameraManager()
     @State var presentCameraView = false
-    @State var images: [UIImage] = []
     var album: Album
     
     @EnvironmentObject var manager: DataManager
@@ -26,7 +25,7 @@ struct AlbumView: View {
                 Text("Example Album")
                     .font(.headline)
                     .fontWeight(.bold)
-                if images.count > 0 {
+                if manager.filteredImages.count > 0 {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 2) {
                             ForEach(manager.filteredImages) { photo in
@@ -60,7 +59,6 @@ struct AlbumView: View {
                 CameraView(cancelPressed: {
                     presentCameraView = false
                 }, getImage: { image in
-                    images.append(image)
                     manager.addPhoto(in: album, image: image)
                     presentCameraView = false
                 })
