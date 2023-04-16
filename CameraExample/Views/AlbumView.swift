@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct AlbumView: View {
+    @State var album: Album
     @StateObject var cameraManager = CameraManager()
     @State var presentCameraView = false
-    var album: Album
+    @State var presentAlbumOptions = false
+    @State var presentChangeAlbumName = false
+    
+    init(album: Album) {
+        self.album = album
+    }
     
     @EnvironmentObject var manager: DataManager
     
@@ -22,9 +28,6 @@ struct AlbumView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text(album.name ?? "")
-                    .font(.headline)
-                    .fontWeight(.bold)
                 if manager.filteredImages.count > 0 {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 2) {
@@ -69,6 +72,36 @@ struct AlbumView: View {
             .onAppear {
                 manager.filterImages(with: album)
             }
+            .navigationTitle(album.name)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        presentAlbumOptions = true
+                    } label: {
+                        Image(systemName: "rectangle.and.pencil.and.ellipsis")
+                    }
+                }
+            }
+            .actionSheet(isPresented: $presentAlbumOptions) {
+                ActionSheet(title: Text("Select an option"), message: nil, buttons: [
+                    .default(Text("Edit Name"), action: {
+                        presentChangeAlbumName = true
+                    }),
+                    .destructive(Text("Delete Album"), action: {
+                    }),
+                    .cancel()
+                ]
+                )
+            }
+            .alert("Update Album", isPresented: $presentChangeAlbumName, actions: {
+                TextField("Name", text: $album.name)
+                Button("Save", action: {
+//                    manager.addAlbum(name: newAlbumName)
+                })
+                Button("Cancel", role: .cancel, action: {})
+            }, message: {
+                Text("Write the new album's name")
+            })
         }
     }
 }
