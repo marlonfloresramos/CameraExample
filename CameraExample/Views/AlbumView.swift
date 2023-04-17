@@ -96,7 +96,7 @@ struct AlbumView: View {
             .alert("Update Album", isPresented: $presentChangeAlbumName, actions: {
                 TextField("Name", text: $album.name)
                 Button("Save", action: {
-//                    manager.addAlbum(name: newAlbumName)
+                    manager.updateAlbum(album: album)
                 })
                 Button("Cancel", role: .cancel, action: {})
             }, message: {

@@ -45,6 +45,20 @@ class DataManager: ObservableObject {
         print("Add album succesfully")
     }
     
+    func updateAlbum(album: Album) {
+        let request = NSFetchRequest<Album>(entityName: "Album")
+        guard let id = album.id else { return }
+        request.predicate = NSPredicate(format: "id = %@", id.uuidString)
+        do {
+            let updatedAlbum = try container.viewContext.fetch(request).first
+            updatedAlbum?.name = album.name
+            saveData()
+            fetchAlbums()
+        } catch {
+            print("error while fetching data: \(error)")
+        }
+    }
+    
     func addPhoto(in album: Album, image: UIImage) {
         let entityDescription = NSEntityDescription.entity(forEntityName: "Photo", in: container.viewContext)
         let photo = Photo(entity: entityDescription!, insertInto: container.viewContext)
