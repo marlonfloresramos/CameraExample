@@ -22,7 +22,7 @@ struct HomeView: View {
                     NavigationLink {
                         AlbumView(album: album)
                     } label: {
-                        Text(album.name ?? "")
+                        Text(album.name)
                     }
                 }
                 Spacer()

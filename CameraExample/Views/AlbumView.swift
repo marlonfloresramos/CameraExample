@@ -14,11 +14,8 @@ struct AlbumView: View {
     @State var presentAlbumOptions = false
     @State var presentChangeAlbumName = false
     
-    init(album: Album) {
-        self.album = album
-    }
-    
     @EnvironmentObject var manager: DataManager
+    @Environment(\.dismiss) private var dismiss
     
     let columns = [
         GridItem(.flexible(), spacing: 2),
@@ -88,6 +85,8 @@ struct AlbumView: View {
                         presentChangeAlbumName = true
                     }),
                     .destructive(Text("Delete Album"), action: {
+                        manager.deleteAlbum(album: album)
+                        dismiss()
                     }),
                     .cancel()
                 ]

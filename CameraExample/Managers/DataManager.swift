@@ -55,7 +55,22 @@ class DataManager: ObservableObject {
             saveData()
             fetchAlbums()
         } catch {
-            print("error while fetching data: \(error)")
+            print("error while updating data: \(error)")
+        }
+    }
+    
+    func deleteAlbum(album: Album) {
+        let request = NSFetchRequest<Album>(entityName: "Album")
+        guard let id = album.id else { return }
+        request.predicate = NSPredicate(format: "id = %@", id.uuidString)
+        do {
+            if let album = try container.viewContext.fetch(request).first {
+                container.viewContext.delete(album)
+                saveData()
+                fetchAlbums()
+            }
+        } catch {
+            print("error while deleting data: \(error)")
         }
     }
     
