@@ -13,6 +13,7 @@ struct AlbumView: View {
     @State var presentCameraView = false
     @State var presentAlbumOptions = false
     @State var presentChangeAlbumName = false
+    @State var presentDeleteAlbumDelete = false
     
     @EnvironmentObject var manager: DataManager
     @Environment(\.dismiss) private var dismiss
@@ -85,8 +86,7 @@ struct AlbumView: View {
                         presentChangeAlbumName = true
                     }),
                     .destructive(Text("Delete Album"), action: {
-                        manager.deleteAlbum(album: album)
-                        dismiss()
+                        presentDeleteAlbumDelete = true
                     }),
                     .cancel()
                 ]
@@ -101,6 +101,16 @@ struct AlbumView: View {
             }, message: {
                 Text("Write the new album's name")
             })
+            .alert("Delete Album", isPresented: $presentDeleteAlbumDelete, actions: {
+                Button("Delete", role: .destructive, action: {
+                    manager.deleteAlbum(album: album)
+                    dismiss()
+                })
+                Button("Cancel", role: .cancel, action: {})
+            }, message: {
+                Text("Are you sure you want to delete this album? It'll delete all their photos too")
+            })
+            
         }
     }
 }
